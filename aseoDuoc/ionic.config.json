@@ -1,0 +1,7 @@
+{
+  "name": "aseoDuoc",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
