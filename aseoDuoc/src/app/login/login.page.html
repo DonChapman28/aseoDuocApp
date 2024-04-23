@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <h1 class="ion-text-center">Iniciar Sesión</h1>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col class="ion-text-center" >
+        <ion-input type="text" placeholder="Rut" [(ngModel)]="rut"></ion-input>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-button (click)="validar()">Ingresar</ion-button>
+    </ion-col>
+  </ion-row> 
+</ion-content>
