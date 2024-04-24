@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ApiServiceService } from '../appservices/api-service.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,10 +12,11 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   rut : any = "";
   password : any ="";
-  
+  datos : any;
   constructor(private alertController:AlertController,
     private router: Router,
     private toastController: ToastController,
+    private api: ApiServiceService
   ) { }
   
   ngOnInit() {
@@ -24,7 +27,7 @@ export class LoginPage implements OnInit {
     const largoRut = this.rut.length;
     const largoPassword = this.password.length;
     console.log(largoRut, largoPassword);
-
+  
     if (largoRut === 0){
       const toast = await this.toastController.create({
         message:"no puede estar vacio el rut",
@@ -34,7 +37,7 @@ export class LoginPage implements OnInit {
       });
       await toast.present()
     }
-    if (largoPassword === 0){
+    else if (largoPassword === 0){
       const toast = await this.toastController.create({
         message:"no puede estar vacio la contraseña",
         buttons:["Cerrar"],
@@ -43,13 +46,35 @@ export class LoginPage implements OnInit {
       });
       await toast.present()
     }
-    else if (largoRut > 10 && largoRut < 13){
-      const toast = await this.toastController.create({
-        message:"no puede la contraseña mas larga de 12 caracteres",
-        buttons:["Cerrar"],
-        color:'secondary',
-        duration: 1000
-      });
-    }
+   
+    else 
+        if (largoRut > 10 || largoRut < 7){
+          const toast = await this.toastController.create({
+          message:"rut invalido",
+          buttons:["Cerrar"],
+          color:'secondary',
+          duration: 1000
+          });
+          await toast.present()
+          }
+
+        else if (largoPassword < 12 || largoPassword > 13){
+          const toast = await this.toastController.create({
+          message:"no puede el contraseña mas larga de 12 caracteres",
+          buttons:["Cerrar"],
+          color:'secondary',
+          duration: 1000
+          });
+          await toast.present()
+          }
+        else
+    
+          this.api.appLogin(this.rut,this.password).subscribe((data: any) => {
+          
+            console.log(data);
+          });
+
+          
+          
 }
 }
