@@ -15,25 +15,41 @@ export class LoginPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
   ) { }
+  
   ngOnInit() {
   }
 
   async validar() {
     
     const largoRut = this.rut.length;
-    const lenghtPassword = this.password.length;
-    console.log(largoRut, lenghtPassword);
+    const largoPassword = this.password.length;
+    console.log(largoRut, largoPassword);
 
     if (largoRut === 0){
       const toast = await this.toastController.create({
-        message:"mala tu wea",
+        message:"no puede estar vacio el rut",
         buttons:["Cerrar"],
         color:'secondary',
         duration: 1000
       });
       await toast.present()
     }
-
-  
+    if (largoPassword === 0){
+      const toast = await this.toastController.create({
+        message:"no puede estar vacio la contraseña",
+        buttons:["Cerrar"],
+        color:'secondary',
+        duration: 1000
+      });
+      await toast.present()
+    }
+    else if (largoRut > 10 && largoRut < 13){
+      const toast = await this.toastController.create({
+        message:"no puede la contraseña mas larga de 12 caracteres",
+        buttons:["Cerrar"],
+        color:'secondary',
+        duration: 1000
+      });
+    }
 }
 }
