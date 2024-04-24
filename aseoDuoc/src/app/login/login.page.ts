@@ -43,6 +43,7 @@ export class LoginPage implements OnInit {
       });
       await toast.present()
     }
+
     else if (largoRut < 10 && largoRut > 13){
       const toast = await this.toastController.create({
         message:"contraseña, maximo 12 y minimo 11 caracteres",
