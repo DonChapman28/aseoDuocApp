@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ApiServiceService } from '../appservices/api-service.service';
+import { LoginserviceService } from '../appservices/loginservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -10,10 +12,12 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   rut : any = "";
   password : any ="";
-  
-  constructor(private alertController:AlertController,
+  datos : any;
+  constructor(private alert:AlertController,
     private router: Router,
     private toastController: ToastController,
+    private api: ApiServiceService,
+    private login: LoginserviceService
   ) { }
   
   ngOnInit() {
@@ -24,7 +28,7 @@ export class LoginPage implements OnInit {
     const largoRut = this.rut.length;
     const largoPassword = this.password.length;
     console.log(largoRut, largoPassword);
-
+  
     if (largoRut === 0){
       const toast = await this.toastController.create({
         message:"no puede estar vacio el rut",
@@ -34,7 +38,7 @@ export class LoginPage implements OnInit {
       });
       await toast.present()
     }
-    if (largoPassword === 0){
+    else if (largoPassword === 0){
       const toast = await this.toastController.create({
         message:"no puede estar vacio la contraseña",
         buttons:["Cerrar"],
