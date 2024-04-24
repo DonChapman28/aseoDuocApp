@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ApiServiceService } from '../appservices/api-service.service';
-
+import { LoginserviceService } from '../appservices/loginservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,10 +13,11 @@ export class LoginPage implements OnInit {
   rut : any = "";
   password : any ="";
   datos : any;
-  constructor(private alertController:AlertController,
+  constructor(private alert:AlertController,
     private router: Router,
     private toastController: ToastController,
-    private api: ApiServiceService
+    private api: ApiServiceService,
+    private login: LoginserviceService
   ) { }
   
   ngOnInit() {
@@ -72,8 +73,29 @@ export class LoginPage implements OnInit {
           this.api.appLogin(this.rut,this.password).subscribe((data: any) => {
           
             console.log(data);
+            this.datos = data;
+
+            
           });
 
+          if(!this.datos) {
+            const alert = await this.alert.create({
+              message:"inicio de sesion exitoso",
+              buttons:["Cerrar"],
+              });
+              await alert.present()
+    
+          }
+          else{
+            const alert = await this.alert.create({
+              message:"datos incorrectos",
+              buttons:["Cerrar"],
+              });
+              await alert.present()
+          }
+
+
+      
           
           
 }
