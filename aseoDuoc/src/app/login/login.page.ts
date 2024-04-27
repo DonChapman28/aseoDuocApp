@@ -81,6 +81,7 @@ export class LoginPage implements OnInit {
           buttons:["Cerrar"],
           });
           await alert.present()
+          this.router.navigate(['/home']);
 
       }
       else{
