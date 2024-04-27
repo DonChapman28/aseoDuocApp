@@ -48,55 +48,49 @@ export class LoginPage implements OnInit {
       await toast.present()
     }
    
-    else 
-        if (largoRut > 10 || largoRut < 7){
-          const toast = await this.toastController.create({
-          message:"rut invalido",
-          buttons:["Cerrar"],
-          color:'secondary',
-          duration: 1000
-          });
-          await toast.present()
-          }
+    else{
+      if (largoRut > 10 || largoRut < 7){
+      const toast = await this.toastController.create({
+      message:"rut invalido",
+      buttons:["Cerrar"],
+      color:'secondary',
+      duration: 1000
+      });
+      await toast.present()
+      }
 
-        else if (largoPassword < 12 || largoPassword > 13){
-          const toast = await this.toastController.create({
-          message:"no puede el contraseña mas larga de 12 caracteres",
-          buttons:["Cerrar"],
-          color:'secondary',
-          duration: 1000
-          });
-          await toast.present()
-          }
-        else
-    
-          this.api.appLogin(this.rut,this.password).subscribe((data: any) => {
-          
-            console.log(data);
-            this.datos = data;
-
-            
-          });
-
-          if(!this.datos) {
-            const alert = await this.alert.create({
-              message:"inicio de sesion exitoso",
-              buttons:["Cerrar"],
-              });
-              await alert.present()
-    
-          }
-          else{
-            const alert = await this.alert.create({
-              message:"datos incorrectos",
-              buttons:["Cerrar"],
-              });
-              await alert.present()
-          }
-
-
+    else if (largoPassword < 12 || largoPassword > 13){
+      const toast = await this.toastController.create({
+      message:"no puede el contraseña mas larga de 12 caracteres",
+      buttons:["Cerrar"],
+      color:'secondary',
+      duration: 1000
+      });
+      await toast.present()
+      }
+    else{
+        this.api.appLogin(this.rut,this.password).subscribe((data: any) => {
       
-          
-          
-}
+        console.log(data);
+        this.datos = data;
+        });
+
+      if(!this.datos) {
+        const alert = await this.alert.create({
+          message:"inicio de sesion exitoso",
+          buttons:["Cerrar"],
+          });
+          await alert.present()
+
+      }
+      else{
+        const alert = await this.alert.create({
+          message:"datos incorrectos",
+          buttons:["Cerrar"],
+          });
+          await alert.present()
+      }}}
+
+  }
+
 }
