@@ -12,7 +12,10 @@ import { LoginserviceService } from '../appservices/loginservice.service';
 export class LoginPage implements OnInit {
   rut : any = "";
   password : any ="";
-  datos : any;
+  idUser : any = {};
+  rut1 :any = "";
+  pass2 :any = "";
+  user: boolean = false;
   constructor(private alert:AlertController,
     private router: Router,
     private toastController: ToastController,
@@ -69,13 +72,26 @@ export class LoginPage implements OnInit {
       await toast.present()
       }
     else{
-        this.api.appLogin(this.rut,this.password).subscribe((data: any) => {
+        this.api.appLogin(this.rut,this.password).subscribe((data: any = {}) => {
       
-        console.log(data);
-        this.datos = data;
-        });
+        
+       //hay que borrar this.datos no es importante
+        data.forEach((element: any) => {
+          // Acceder a cada propiedad del objeto individual
+          this.rut1 = element.rut;
+          this.pass2 = element.contra_emp;
+          this.idUser = element.id;
 
-      if(!this.datos) {
+          if(this.rut1 === this.rut && this.pass2 === this.password){
+            this.user = true;
+          }
+          else{
+            this.user = false;
+          }
+        });
+      });
+
+      if(!this.user) {
         const alert = await this.alert.create({
           message:"inicio de sesion exitoso",
           buttons:["Cerrar"],
@@ -93,5 +109,6 @@ export class LoginPage implements OnInit {
       }}}
 
   }
+
 
 }
