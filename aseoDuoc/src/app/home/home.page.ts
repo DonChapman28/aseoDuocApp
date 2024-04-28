@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationserviceService } from '../appservices/navigationservice.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private navegacionService: NavigationserviceService) {}
+  
+  irRegistro() {
+    this.navegacionService.navegarRegistro();
+  }
 
+  irAseo() {
+    this.navegacionService.navegarAseo();
+  }
+
+  irLogin() {
+    this.navegacionService.navegarLogin();
+  }
 }
