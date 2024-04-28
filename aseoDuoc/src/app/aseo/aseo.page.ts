@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, Platform } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from '../appservices/barcode-scanning-modal.component';
-import { LensFacing,BarcodeScanner, BarcodeFormat } from '@capacitor-mlkit/barcode-scanning';
+import { LensFacing,BarcodeScanner} from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
   selector: 'app-aseo',
@@ -9,7 +9,7 @@ import { LensFacing,BarcodeScanner, BarcodeFormat } from '@capacitor-mlkit/barco
   styleUrls: ['./aseo.page.scss'],
 })
 export class AseoPage implements OnInit {
-  scanResult: any;
+  scanResult= '';
   constructor(private platform: Platform,
     private modalController: ModalController,
     
@@ -40,7 +40,6 @@ export class AseoPage implements OnInit {
         if(data){
           this.scanResult = data?.barcode?.displayValue;
           console.log(this.scanResult);
-        }
-    }
+        }};
   
 }

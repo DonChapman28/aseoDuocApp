@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- To get access to the camera. -->
-<uses-permission android:name="android.permission.CAMERA" />
-<!-- To get access to the flashlight. -->
-<uses-permission android:name="android.permission.FLASHLIGHT"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -44,5 +39,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- To get access to the camera. -->
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- To get access to the flashlight. -->
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
 </manifest>

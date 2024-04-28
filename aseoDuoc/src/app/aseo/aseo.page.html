@@ -10,6 +10,13 @@
         <ion-button (click)="startScan()">iniciar</ion-button>
       </ion-col>
     </ion-row>
+
+    <ion-item class="result" *ngIf="scanResult" lines="none">
+      <ion-label>
+        <p>scan result</p>
+        <div>{{scanResult}}</div>
+      </ion-label>
+    </ion-item>
     
     <ion-row>
       <ion-col class="ion-text-center">

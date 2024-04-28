@@ -22,8 +22,7 @@ import { ModalController } from '@ionic/angular';
   selector: 'app-barcode-scanning',
   template: `
     <ion-header class="ion-no-border">
-      <ion-toolbar color="Shade">
-      <ion-title>scanning</ion-title>
+      <ion-toolbar color="tertiary">
         <ion-buttons slot="end">
           <ion-button (click)="closeModal()">
             <ion-icon name="close"></ion-icon>
@@ -108,70 +107,6 @@ export class BarcodeScanningModalComponent
   }
 
   private async startScan(): Promise<void> {
-    // Hide everything behind the modal (see `src/theme/variables.scss`)
-    document.querySelector('body')?.classList.add('barcode-scanning-active');
-
-    const options: StartScanOptions = {
-      formats: this.formats,
-      lensFacing: this.lensFacing,
-    };
-
-    const squareElementBoundingClientRect =
-      this.squareElement?.nativeElement.getBoundingClientRect();
-    const scaledRect = squareElementBoundingClientRect
-      ? {
-        left: squareElementBoundingClientRect.left * window.devicePixelRatio,
-        right:
-          squareElementBoundingClientRect.right * window.devicePixelRatio,
-        top: squareElementBoundingClientRect.top * window.devicePixelRatio,
-        bottom:
-          squareElementBoundingClientRect.bottom * window.devicePixelRatio,
-        width:
-          squareElementBoundingClientRect.width * window.devicePixelRatio,
-        height:
-          squareElementBoundingClientRect.height * window.devicePixelRatio,
-      }
-      : undefined;
-    const detectionCornerPoints = scaledRect
-      ? [
-        [scaledRect.left, scaledRect.top],
-        [scaledRect.left + scaledRect.width, scaledRect.top],
-        [
-          scaledRect.left + scaledRect.width,
-          scaledRect.top + scaledRect.height,
-        ],
-        [scaledRect.left, scaledRect.top + scaledRect.height],
-      ]
-      : undefined;
-    const listener = await BarcodeScanner.addListener(
-      'barcodeScanned',
-      async (event) => {
-        this.ngZone.run(() => {
-          const cornerPoints = event.barcode.cornerPoints;
-          if (detectionCornerPoints && cornerPoints) {
-            if (
-              detectionCornerPoints[0][0] > cornerPoints[0][0] ||
-              detectionCornerPoints[0][1] > cornerPoints[0][1] ||
-              detectionCornerPoints[1][0] < cornerPoints[1][0] ||
-              detectionCornerPoints[1][1] > cornerPoints[1][1] ||
-              detectionCornerPoints[2][0] < cornerPoints[2][0] ||
-              detectionCornerPoints[2][1] < cornerPoints[2][1] ||
-              detectionCornerPoints[3][0] > cornerPoints[3][0] ||
-              detectionCornerPoints[3][1] < cornerPoints[3][1]
-            ) {
-              return;
-            }
-          }
-          listener.remove();
-          this.closeModal(event.barcode);
-        });
-      }
-    );
-    await BarcodeScanner.startScan(options);
-  }
-
-
-  private async startScan2(): Promise<void> {
     // Hide everything behind the modal (see `src/theme/variables.scss`)
     document.querySelector('body')?.classList.add('barcode-scanning-active');
 
