@@ -80,7 +80,7 @@ export class LoginPage implements OnInit {
           // Acceder a cada propiedad del objeto individual
           this.rut1 = element.rut;
           this.pass2 = element.contra_emp;
-          this.idUser = element.id;
+          this.idUser = element.id_emp;
 
           if(this.rut1 === this.rut && this.pass2 === this.password){
             this.user = true;
@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
           buttons:["Cerrar"],
           });
           await alert.present()
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home/' + this.idUser]);
 
       }
       else{
