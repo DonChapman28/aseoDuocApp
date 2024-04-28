@@ -9,7 +9,7 @@ import { NavigationserviceService } from '../appservices/navigationservice.servi
 export class HomePage {
 
   constructor(private navegacionService: NavigationserviceService) {}
-  
+
   irRegistro() {
     this.navegacionService.navegarRegistro();
   }
