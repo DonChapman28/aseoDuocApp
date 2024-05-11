@@ -15,7 +15,6 @@ export class LoginPage implements OnInit {
   idUser : any = {};
   rut1 :any = "";
   pass2 :any = "";
-  user: boolean = false;
   constructor(private alert:AlertController,
     private router: Router,
     private toastController: ToastController,
@@ -72,43 +71,43 @@ export class LoginPage implements OnInit {
       await toast.present()
       }
     else{
-        this.api.appLogin(this.rut,this.password).subscribe((data: any = {}) => {
-      
+      try {
+        const data: any = await this.api.appLogin(this.rut, this.password).toPromise();
         
-       //hay que borrar this.datos no es importante
-        data.forEach((element: any) => {
+        let userFound = false;
+
+        for (const element of data) {
           // Acceder a cada propiedad del objeto individual
           this.rut1 = element.rut;
           this.pass2 = element.contra_emp;
           this.idUser = element.id_emp;
 
-          if(this.rut1 === this.rut && this.pass2 === this.password){
-            this.user = true;
+          if (this.rut1 === this.rut && this.pass2 === this.password) {
+            userFound = true;
+            const alert = await this.alert.create({
+              message: "Inicio de sesión exitoso",
+              buttons: ["Cerrar"],
+            });
+            await alert.present();
+            this.router.navigate(['/home/' + this.idUser]);
+            break;
           }
-          else{
-            this.user = false;
-          }
-        });
+        }
+
+        if (!userFound) {
+          const alert = await this.alert.create({
+            message: "Datos incorrectos",
+            buttons: ["Cerrar"],
+          });
+          await alert.present();
+        }
+      } catch (error) {
+       // Manejar error de la solicitud HTTP
+       const alert = await this.alert.create({
+        message: "error de conexion",
+        buttons: ["Cerrar"],
       });
-
-      if(!this.user) {
-        const alert = await this.alert.create({
-          message:"inicio de sesion exitoso",
-          buttons:["Cerrar"],
-          });
-          await alert.present()
-          this.router.navigate(['/home/' + this.idUser]);
-
+      await alert.present();
       }
-      else{
-        const alert = await this.alert.create({
-          message:"datos incorrectos",
-          buttons:["Cerrar"],
-          });
-          await alert.present()
-      }}}
-
-  }
-
-
-}
+    }
+  }}}
