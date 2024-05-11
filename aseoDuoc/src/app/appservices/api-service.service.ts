@@ -14,4 +14,8 @@ private urlAPI = 'https://apiapp-78xi.onrender.com';
     return this.http.get(url);
 }
 
+postRegistro(data : any) {
+  const url = this.urlAPI; 
+  return this.http.post<any>(url, data);
+}  
 }
