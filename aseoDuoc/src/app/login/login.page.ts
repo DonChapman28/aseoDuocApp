@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { ApiServiceService } from '../appservices/api-service.service';
 import { LoginserviceService } from '../appservices/loginservice.service';
+import { DatosserviceService } from '../appservices/datosservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,11 +16,15 @@ export class LoginPage implements OnInit {
   idUser : any = {};
   rut1 :any = "";
   pass2 :any = "";
+
+
+
   constructor(private alert:AlertController,
     private router: Router,
     private toastController: ToastController,
     private api: ApiServiceService,
-    private login: LoginserviceService
+    private login: LoginserviceService,
+    private datos: DatosserviceService
   ) { }
   
   ngOnInit() {
@@ -81,6 +86,8 @@ export class LoginPage implements OnInit {
           this.rut1 = element.rut;
           this.pass2 = element.contra_emp;
           this.idUser = element.id_emp;
+          this.datos.id = element.id_emp;
+          
 
           if (this.rut1 === this.rut && this.pass2 === this.password) {
             userFound = true;

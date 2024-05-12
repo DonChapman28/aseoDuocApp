@@ -13,16 +13,22 @@ export class AseoserviceService {
   ) { }
 
 
-scanSalida(){
+scanSalida(data : any){
   
-
-const data = {
+/* const data = {
 'id_emp: ': this.datos.id,
 'id_esp: ': this.datos.espacio,
 'salida: ': this.datos.fechaSalida,
-'entrada: ': this.datos.fechaEntrada}
+'entrada: ': this.datos.fechaEntrada} */
 
-this.api.postRegistro(data)
+this.api.postRegistro(data).subscribe(
+  response => {
+    console.log(response); // Puedes manejar la respuesta aquí
+  },
+  error => {
+    console.error(error); // Puedes manejar el error aquí
+  }
+);
 }
 
 }
