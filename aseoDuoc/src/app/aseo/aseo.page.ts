@@ -11,7 +11,11 @@ import { AseoserviceService } from '../appservices/aseoservice.service';
   styleUrls: ['./aseo.page.scss'],
 })
 export class AseoPage implements OnInit {
-  scanResult= '';
+  scanResult= ''; 
+  iduser1 :any;
+  espacio :any;
+  fechaentrada :any;
+  fechasalida :any;
   constructor(private platform: Platform,
     private modalController: ModalController,
     private fecha: FechaserviceService,
@@ -45,9 +49,14 @@ export class AseoPage implements OnInit {
         if(data){
           this.scanResult = data?.barcode?.displayValue;
           console.log(this.scanResult);
-          this.datos.fechaEntrada = this.fecha.getFechaHora();
+          
+          
           this.datos.espacio = this.scanResult;
-         
+          this.datos.fechaEntrada = this.fecha.getFechaHora();
+       
+          this.iduser1 = this.datos.id;
+          this.espacio = this.datos.espacio;
+          this.fechaentrada = this.datos.fechaEntrada;
 
         }};
   
@@ -70,7 +79,14 @@ export class AseoPage implements OnInit {
           this.scanResult = data?.barcode?.displayValue;
           console.log(this.scanResult);
           this.datos.fechaSalida = this.fecha.getFechaHora();
-
+          console.log(this.datos.fechaSalida);
+          const datosRegistro = {
+            'empleado_id_emp':this.datos.id, 
+            'espacio_id_esp':this.datos.espacio, 
+            'fecha_salida':this.datos.fechaSalida, 
+            'fecha_entrada':this.datos.fechaEntrada 
+          }
+          this.aseo.scanSalida(datosRegistro);
         }};
   
 }
