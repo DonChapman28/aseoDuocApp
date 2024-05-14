@@ -82,9 +82,9 @@ export class AseoPage implements OnInit {
           console.log(this.datos.fechaSalida);
           const datosRegistro = {
             'empleado_id_emp':this.datos.id, 
-            'espacio_id_esp':this.datos.espacio, 
-            'fecha_salida':this.datos.fechaSalida, 
-            'fecha_entrada':this.datos.fechaEntrada 
+            'espacio_id_esp':this.datos.espacio,  
+            'fecha_entrada':this.datos.fechaEntrada,
+            'fecha_salida':this.datos.fechaSalida 
           }
           this.aseo.scanSalida(datosRegistro);
         }};
