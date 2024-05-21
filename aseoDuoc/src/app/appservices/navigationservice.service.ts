@@ -19,4 +19,7 @@ export class NavigationserviceService {
   navegarLogin() {
     this.router.navigate(['/login']);
   }
+  navegarObservaciones() {
+    this.router.navigate(['/observaciones']);
+  }
 }
