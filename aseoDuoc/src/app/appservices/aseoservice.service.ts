@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DatosserviceService } from './datosservice.service';
 import { ApiServiceService } from './api-service.service';
 import { FechaserviceService } from './fechaservice.service';
+import { AlertController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,8 @@ export class AseoserviceService {
 
   constructor(private datos:DatosserviceService,
               private api:ApiServiceService,
-              private fecha: FechaserviceService
+              private fecha: FechaserviceService,
+              private alert: AlertController
   ) { }
 
 
@@ -22,11 +24,21 @@ scanSalida(data : any){
 'entrada: ': this.datos.fechaEntrada} */
 
 this.api.postRegistro(data).subscribe(
-  response => {
+  async response => {
+    const alert = await this.alert.create({
+      message: "registro exitoso :)",
+      buttons: ["Cerrar"],
+    });
+    await alert.present();
     console.log(response); // Puedes manejar la respuesta aquí
   },
-  error => {
-    console.error(error); // Puedes manejar el error aquí
+  async error => {
+    const alert = await this.alert.create({
+      message: "error de registro :(",
+      buttons: ["Cerrar"],
+    });
+    await alert.present();
+    console.log(error); // Puedes manejar el error aquí
   }
 );
 }
