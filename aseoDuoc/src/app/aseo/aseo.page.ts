@@ -5,6 +5,7 @@ import { LensFacing,BarcodeScanner} from '@capacitor-mlkit/barcode-scanning';
 import { FechaserviceService } from '../appservices/fechaservice.service';
 import { DatosserviceService } from '../appservices/datosservice.service';
 import { AseoserviceService } from '../appservices/aseoservice.service';
+import { NavigationserviceService } from '../appservices/navigationservice.service';
 @Component({
   selector: 'app-aseo',
   templateUrl: './aseo.page.html',
@@ -20,9 +21,14 @@ export class AseoPage implements OnInit {
     private modalController: ModalController,
     private fecha: FechaserviceService,
     private datos: DatosserviceService,
-    private aseo: AseoserviceService
+    private aseo: AseoserviceService,
+    private navegacionService: NavigationserviceService
     
   ) { }
+  
+  irObservaciones() {
+    this.navegacionService.navegarObservaciones();
+  }
 
   ngOnInit() : void {
     if(this.platform.is('capacitor')){

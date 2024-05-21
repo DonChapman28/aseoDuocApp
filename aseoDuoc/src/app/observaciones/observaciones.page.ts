@@ -12,4 +12,5 @@ export class ObservacionesPage implements OnInit {
   ngOnInit() {
   }
 
+  
 }
