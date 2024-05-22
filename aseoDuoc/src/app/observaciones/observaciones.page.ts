@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DatosserviceService } from '../appservices/datosservice.service';
 @Component({
   selector: 'app-observaciones',
   templateUrl: './observaciones.page.html',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObservacionesPage implements OnInit {
 
-  constructor() { }
+tipo : any;
+descripcion : any;
+  constructor(private datos: DatosserviceService) { }
 
   ngOnInit() {
+  }
+
+  enviar(){
+    console.log(this.tipo);
+    console.log(this.descripcion);
   }
 
   
