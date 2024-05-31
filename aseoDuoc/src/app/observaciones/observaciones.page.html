@@ -7,13 +7,14 @@
 <ion-content [fullscreen]="true" class="ion-text-center">
   <ion-list>
     <ion-item>
-      <ion-select placeholder="tipo de observación">
+      <ion-select [(ngModel)]="tipo" placeholder="tipo de observación">
         <div slot="label"><ion-text color="danger">(Obligatorio)</ion-text></div>
         <ion-select-option value="1">Incidencia</ion-select-option>
         <ion-select-option value="2">Objeto Perdido</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-textarea placeholder="Escribir aquí"></ion-textarea>
-  <ion-button>agregar la observación</ion-button>
+  <ion-textarea [(ngModel)]="descripcion" placeholder="Escribir aquí"></ion-textarea>
+  <ion-button (click)="foto()">subir foto</ion-button>
+  <ion-button (click)="enviar()">agregar la observación</ion-button>
 </ion-content>
