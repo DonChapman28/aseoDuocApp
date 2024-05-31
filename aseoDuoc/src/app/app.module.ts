@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BarcodeScanningModalComponent } from './appservices/barcode-scanning-modal.component';
+import { PhotoModalComponent } from './photoService/photo-modal-component';
 
 @NgModule({
-  declarations: [AppComponent,BarcodeScanningModalComponent],
+  declarations: [AppComponent,BarcodeScanningModalComponent,PhotoModalComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
