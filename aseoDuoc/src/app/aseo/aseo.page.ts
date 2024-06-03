@@ -86,13 +86,6 @@ export class AseoPage implements OnInit {
           console.log(this.scanResult);
           this.datos.fechaSalida = this.fecha.getFechaHora();
           console.log(this.datos.fechaSalida);
-          const datosRegistro = {
-            'empleado_id_emp':this.datos.id, 
-            'espacio_id_esp':this.datos.espacio,  
-            'fecha_entrada':this.datos.fechaEntrada,
-            'fecha_salida':this.datos.fechaSalida 
-          }
-          this.aseo.scanSalida(datosRegistro);
         }};
   
 }

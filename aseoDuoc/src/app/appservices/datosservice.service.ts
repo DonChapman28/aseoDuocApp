@@ -8,9 +8,10 @@ export class DatosserviceService {
   public fechaEntrada: any;
   public fechaSalida: any;
   public espacio: any;
-  public tipoObs: any;
+  public tipo : number = 0;
   public descripcion: any;
 
+  public datosRegistro: any = {};
 
   constructor() { }
 }
