@@ -18,4 +18,9 @@ postRegistro(data : any) {
   const url = this.urlAPI + '/api/insertRegistro'; 
   return this.http.post(url, data);
 }  
+
+postRegistroObs(data : any) {
+  const url = this.urlAPI + '/api/insertRegObs'; 
+  return this.http.post(url, data);
+}  
 }
