@@ -15,7 +15,7 @@ export class AseoserviceService {
   ) { }
 
 
-scanSalida(data : any){
+scanInicio(data : any){
   
 /* const data = {
 'id_emp: ': this.datos.id,
@@ -23,10 +23,11 @@ scanSalida(data : any){
 'salida: ': this.datos.fechaSalida,
 'entrada: ': this.datos.fechaEntrada} */
 
-this.api.postRegistro(data).subscribe(
+this.api.postInicioAseo(data).subscribe(
   async response => {
+    this.datos.id_registro = response.id_registro;
     const alert = await this.alert.create({
-      message: "registro exitoso :)",
+      message: "registro de inicio exitoso :)",
       buttons: ["Cerrar"],
     });
     await alert.present();
@@ -43,7 +44,7 @@ this.api.postRegistro(data).subscribe(
 );
 }
 
-scanSalidaObs(data : any){
+scanObs(data : any){
   
 /* const data = {
 'id_emp: ': this.datos.id,
@@ -51,10 +52,10 @@ scanSalidaObs(data : any){
 'salida: ': this.datos.fechaSalida,
 'entrada: ': this.datos.fechaEntrada} */
 
-this.api.postRegistroObs(data).subscribe(
+this.api.postInsertObs(data).subscribe(
   async response => {
     const alert = await this.alert.create({
-      message: "registro exitoso :)",
+      message: "registro de observacion exitoso :)",
       buttons: ["Cerrar"],
     });
     await alert.present();
@@ -71,4 +72,47 @@ this.api.postRegistroObs(data).subscribe(
 );
 }
 
+
+scanFinalizar(data: any){
+  this.api.putFinalizarAseo(data).subscribe(
+    async response => {
+      const alert = await this.alert.create({
+        message: "registro de finalizacion exitoso :)",
+        buttons: ["Cerrar"],
+      });
+      await alert.present();
+      console.log(response); // Puedes manejar la respuesta aquí
+    },
+    async error => {
+      const alert = await this.alert.create({
+        message: "error de registro :(",
+        buttons: ["Cerrar"],
+      });
+      await alert.present();
+      console.log(error); // Puedes manejar el error aquí
+    }
+  );
 }
+
+
+/* this.api.postInsertObs(data).subscribe(
+  async response => {
+    const alert = await this.alert.create({
+      message: "registro exitoso :)",
+      buttons: ["Cerrar"],
+    });
+    await alert.present();
+    console.log(response); // Puedes manejar la respuesta aquí
+  },
+  async error => {
+    const alert = await this.alert.create({
+      message: "error de registro :(",
+      buttons: ["Cerrar"],
+    });
+    await alert.present();
+    console.log(error); // Puedes manejar el error aquí
+  }
+); */
+}
+
+

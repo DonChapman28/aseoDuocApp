@@ -33,12 +33,12 @@ postInicioAseo(data:any): Observable<{id_registro: number}>{
 }
 
 postInsertObs(data:any){
-  const url = this.urlAPI + 'insertObservacion';
+  const url = this.urlAPI + '/api/insertObservacion';
   return this.http.post(url,data); 
 }
 
-postFinalizarAseo(data:any){
-  const url = this.urlAPI + 'finalizarAseo';
+putFinalizarAseo(data:any){
+  const url = this.urlAPI + '/api/finalizarAseo';
   return this.http.put(url,data); 
 }
 

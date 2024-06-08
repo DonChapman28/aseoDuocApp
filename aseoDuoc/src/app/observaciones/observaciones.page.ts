@@ -11,9 +11,9 @@ import { PhotoModalComponent } from '../photoService/photo-modal-component';
 })
 export class ObservacionesPage implements OnInit {
 
-tipo :number = 0;
+tipo_observacion :any;
 descripcion : any;
-enlace: any = "";
+enlace: any = 'Sin foto';
   constructor(private platform: Platform,
     private modalController: ModalController,
     private datos: DatosserviceService,
@@ -30,22 +30,19 @@ enlace: any = "";
   }
   
 
-  enviar(){
-    this.datos.datosRegistro = {
-      'empleado_id_emp':this.datos.id, 
-      'espacio_id_esp':this.datos.espacio,  
-      'fecha_entrada':this.datos.fechaEntrada,
-      'fecha_salida':this.datos.fechaSalida, 
-      'tipo':this.tipo, 
+  grabarObservacion(){
+    this.datos.datosObservacion = {
       'descripcion':this.descripcion,
-      'enlace':this.enlace 
+      'enlace':this.enlace,
+      'id_registro':this.datos.id_registro,
+      'tipo_observacion': this.tipo_observacion
     }
-    console.log(this.datos.datosRegistro);
-    this.aseo.scanSalidaObs(this.datos.datosRegistro);
+    console.log(this.datos.datosObservacion);
+    this.aseo.scanObs(this.datos.datosObservacion);
    
   }
   
-  enviar2(){
+/*   enviar2(){
     this.datos.datosRegistro = {
       'empleado_id_emp':this.datos.id, 
       'espacio_id_esp':this.datos.espacio,  
@@ -55,7 +52,7 @@ enlace: any = "";
     console.log(this.datos.datosRegistro);
     this.aseo.scanSalida(this.datos.datosRegistro);
    
-  }
+  } */
 
   
 }
