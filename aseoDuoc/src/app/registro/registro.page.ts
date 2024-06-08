@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavigationserviceService } from '../appservices/navigationservice.service';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroPage implements OnInit {
 
-  constructor() { }
+  constructor(private navegacionService: NavigationserviceService) { }
 
   ngOnInit() {
   }
-
+  irHome() {
+    this.navegacionService.navegarHome();
+  }
 }

@@ -1,32 +1,65 @@
 
-  
-  /**
-  *Barcode Scanning
-  * ---------------------------------------------------
-  */
-  
-  body.barcode-scanning-active{
+ /**
+ * Variables de Color de Duoc UC
+ * ---------------------------------------------------
+ */
+:root {
+  --ion-color-primary: #0033A0; /* Azul Duoc UC */
+  --ion-color-primary-rgb: 0, 51, 160;
+  --ion-color-primary-contrast: #ffffff; /* Contraste blanco */
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #002b80;
+  --ion-color-primary-tint: #334cb3;
+
+  --ion-color-secondary: #FFD100; /* Amarillo Duoc UC */
+  --ion-color-secondary-rgb: 255, 209, 0;
+  --ion-color-secondary-contrast: #000000; /* Contraste negro */
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #e6bb00;
+  --ion-color-secondary-tint: #ffdb33;
+
+  --ion-color-tertiary: #ffffff; /* Blanco */
+  --ion-color-tertiary-rgb: 255, 255, 255;
+  --ion-color-tertiary-contrast: #000000; /* Contraste negro */
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #e6e6e6;
+  --ion-color-tertiary-tint: #ffffff;
+
+  --ion-color-dark: #000000; /* Negro */
+  --ion-color-dark-rgb: 0, 0, 0;
+  --ion-color-dark-contrast: #ffffff; /* Contraste blanco */
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1a1a1a;
+  --ion-color-dark-tint: #333333;
+}
+
+/**
+ * Barcode Scanning
+ * ---------------------------------------------------
+ */
+
+body.barcode-scanning-active {
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+.barcode-scanning-modal {
+  visibility: visible;
+}
+
+@media (prefers-color-scheme: dark) {
+  .barcode-scanning-active {
     visibility: hidden;
     --background: transparent;
     --ion-background-color: transparent;
   }
-  
-  .barcode-scanning-modal{
-    visibility: visible;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .barcode-scanning-active{
-        visibility: hidden;
-        --background: transparent;
-        --ion-background-color: transparent;
-    }
-  }
-  
-  html {
-    /* 
-     * For more information on dynamic font scaling, visit the documentation:
-     * https://ionicframework.com/docs/layout/dynamic-font-scaling
-     */
-    --ion-dynamic-font: var(--ion-default-dynamic-font);
-  }
+}
+
+html {
+  /* 
+   * For more information on dynamic font scaling, visit the documentation:
+   * https://ionicframework.com/docs/layout/dynamic-font-scaling
+   */
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
+}

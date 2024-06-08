@@ -22,4 +22,8 @@ export class NavigationserviceService {
   navegarObservaciones() {
     this.router.navigate(['/observaciones']);
   }
+
+  navegarHome() {
+    this.router.navigate(['home/:id']);
+  }
 }
