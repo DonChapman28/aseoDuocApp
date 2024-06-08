@@ -10,7 +10,7 @@ export class DatosserviceService {
   public espacio: any;
   public tipo : number = 0;
   public descripcion: any;
-
+  public id_registro: any;
   public datosRegistro: any = {};
 
   constructor() { }
