@@ -26,10 +26,15 @@ export class AseoPage implements OnInit {
     
   ) { }
   
+  irLogin() {
+    this.navegacionService.navegarLogin();
+  }
   irObservaciones() {
     this.navegacionService.navegarObservaciones();
   }
-
+  irHome() {
+    this.navegacionService.navegarHome();
+  }
   ngOnInit() : void {
     if(this.platform.is('capacitor')){
       BarcodeScanner.isSupported().then();
