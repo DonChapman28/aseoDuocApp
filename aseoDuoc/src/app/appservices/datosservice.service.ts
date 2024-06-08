@@ -11,9 +11,12 @@ export class DatosserviceService {
   public tipo_observacion : any;
   public descripcion: any;
   public id_registro: number = 0;
+  public enlace : any;
+  public foto: any;
   public datosRegistro: any = {};
   public datosObservacion: any = {};
   public datosUpdate: any = {};
 
   constructor() { }
 }
+ 

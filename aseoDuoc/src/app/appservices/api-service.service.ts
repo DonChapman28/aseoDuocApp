@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiServiceService {
 private urlAPI = 'https://apiapp-78xi.onrender.com';
+private apiFoto = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +16,7 @@ private urlAPI = 'https://apiapp-78xi.onrender.com';
     return this.http.get(url);
 }
 
-postRegistro(data : any) {
+/* postRegistro(data : any) {
   const url = this.urlAPI + '/api/insertRegistro'; 
   return this.http.post(url, data);
 }  
@@ -23,7 +24,7 @@ postRegistro(data : any) {
 postRegistroObs(data : any) {
   const url = this.urlAPI + '/api/insertRegObs'; 
   return this.http.post(url, data);
-}  
+}   */
 
 
 //nuevos endpoints
@@ -42,7 +43,20 @@ putFinalizarAseo(data:any){
   return this.http.put(url,data); 
 }
 
+/* uploadImage(image: File): Observable<{enlace: any}> {
+  const url = this.apiFoto + '/upload';
+  return this.http.post<{enlace : any}>(url,image);
+} */
+  uploadImage(data:Blob): Observable<{ enlace: any }> {
+    const url = this.apiFoto + '/uploads';
 
+    // Crear un FormData para enviar el archivo
+    const formData = new FormData();
+    formData.append('imageBase64', data, 'photo.jpg');
+
+    // Realizar la solicitud POST con el FormData
+    return this.http.post<{ enlace: any }>(url, formData);
+  }
 
 
 }
