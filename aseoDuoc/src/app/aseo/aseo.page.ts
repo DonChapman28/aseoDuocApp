@@ -61,14 +61,21 @@ export class AseoPage implements OnInit {
           this.scanResult = data?.barcode?.displayValue;
           console.log(this.scanResult);
           
-          
           this.datos.espacio = this.scanResult;
           this.datos.fechaEntrada = this.fecha.getFechaHora();
        
           this.iduser1 = this.datos.id;
           this.espacio = this.datos.espacio;
           this.fechaentrada = this.datos.fechaEntrada;
+          this.datos.fechaSalida = null;
 
+          this.datos.datosRegistro = {
+            'empleado_id_emp':this.datos.id, 
+            'espacio_id_esp':this.datos.espacio,  
+            'fecha_entrada':this.datos.fechaEntrada,
+            'fecha_salida':null
+          }
+          this.aseo.scanInicio(this.datos.datosRegistro);
         }};
   
     async startScanSalida(){
@@ -91,6 +98,12 @@ export class AseoPage implements OnInit {
           console.log(this.scanResult);
           this.datos.fechaSalida = this.fecha.getFechaHora();
           console.log(this.datos.fechaSalida);
+
+          this.datos.datosUpdate = {
+            'fecha_salida': this.datos.fechaSalida,
+            'id_registro': this.datos.id_registro
+          }
+          this.aseo.scanFinalizar(this.datos.datosUpdate);
         }};
   
 }
