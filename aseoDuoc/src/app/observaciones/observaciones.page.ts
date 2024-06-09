@@ -33,7 +33,7 @@ enlace: any = 'Sin foto';
   grabarObservacion(){
     this.datos.datosObservacion = {
       'descripcion':this.descripcion,
-      'enlace':this.enlace,
+      'enlace':this.datos.enlace,
       'id_registro':this.datos.id_registro,
       'tipo_observacion': this.tipo_observacion
     }

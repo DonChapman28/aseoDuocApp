@@ -31,10 +31,6 @@ export class PhotoService {
     const blob = await this.getBlobFromUri(capturedPhoto.webPath!);
     this.datos.foto = blob;
 
-    this.photos.unshift({
-      filepath: "soon...", // Cambiar esto según la lógica de almacenamiento de archivos
-      webviewPath: capturedPhoto.webPath!
-    });
     console.log('wanolo esta aqui', this.datos.foto)
     
   }
@@ -47,12 +43,13 @@ export class PhotoService {
   
  public async uploadPhoto() {
     if (this.datos.foto) {
-      const file = new File([this.datos.foto], 'photo.jpg', { type: 'image/jpeg' });
+      const file = this.datos.foto;
 
       this.api.uploadImage(file).subscribe(
         (response) => {
-          console.log('Foto subida correctamente:', response.enlace);
-          this.datos.enlace = response.enlace;
+          console.log('Foto subida correctamente:', response.url);
+          this.datos.enlace = response.url;
+          console.log('enlace para bd: '+ this.datos.enlace);
           // Aquí puedes actualizar la interfaz de usuario o manejar la respuesta de alguna otra forma
         },
         (error) => {

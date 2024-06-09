@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiServiceService {
 private urlAPI = 'https://apiapp-78xi.onrender.com';
-private apiFoto = 'http://localhost:3000';
+private apiFoto = 'https://pruebacargaimagenes.onrender.com';
 
   constructor(private http: HttpClient) { }
 
@@ -47,15 +47,15 @@ putFinalizarAseo(data:any){
   const url = this.apiFoto + '/upload';
   return this.http.post<{enlace : any}>(url,image);
 } */
-  uploadImage(data:Blob): Observable<{ enlace: any }> {
+  uploadImage(data:File): Observable<{ url: string }> {
     const url = this.apiFoto + '/uploads';
 
     // Crear un FormData para enviar el archivo
     const formData = new FormData();
-    formData.append('imageBase64', data, 'photo.jpg');
+    formData.append('imageBase64', data, 'foto.jpg');
 
     // Realizar la solicitud POST con el FormData
-    return this.http.post<{ enlace: any }>(url, formData);
+    return this.http.post<{ url: string }>(url, formData);
   }
 
 
