@@ -43,10 +43,11 @@ putFinalizarAseo(data:any){
   return this.http.put(url,data); 
 }
 
-/* uploadImage(image: File): Observable<{enlace: any}> {
-  const url = this.apiFoto + '/upload';
-  return this.http.post<{enlace : any}>(url,image);
-} */
+getRegistroUsuario(id: number){
+  const url = `${this.urlAPI}/registros?id=${id}`; 
+  return this.http.get(url);
+}
+
   uploadImage(data:File): Observable<{ url: string }> {
     const url = this.apiFoto + '/uploads';
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationserviceService } from '../appservices/navigationservice.service';
+import { DatosserviceService } from '../appservices/datosservice.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,9 @@ import { NavigationserviceService } from '../appservices/navigationservice.servi
 })
 export class HomePage {
 
-  constructor(private navegacionService: NavigationserviceService) {}
+  constructor(private navegacionService: NavigationserviceService,
+              private datos: DatosserviceService
+  ) {}
 
   irRegistro() {
     this.navegacionService.navegarRegistro();
@@ -19,6 +22,7 @@ export class HomePage {
   }
 
   irLogin() {
+    this.datos.id = 0;
     this.navegacionService.navegarLogin();
   }
 }

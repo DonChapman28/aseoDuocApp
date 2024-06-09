@@ -96,6 +96,8 @@ export class LoginPage implements OnInit {
               buttons: ["Cerrar"],
             });
             await alert.present();
+            this.rut = '';
+            this.password = '';
             this.router.navigate(['/home/' + this.idUser]);
             break;
           }
