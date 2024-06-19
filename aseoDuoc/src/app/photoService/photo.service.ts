@@ -5,6 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 import { UserPhoto } from './user-photo';
 import { ApiServiceService } from '../appservices/api-service.service';
 import { DatosserviceService } from '../appservices/datosservice.service';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import { DatosserviceService } from '../appservices/datosservice.service';
 export class PhotoService {
   public photos: UserPhoto[] = [];
   constructor(private api : ApiServiceService,
-              private datos: DatosserviceService
+              private datos: DatosserviceService,
+              private alert: AlertController
   ) { }
 
   public async addNewToGallery() {
@@ -41,21 +43,32 @@ export class PhotoService {
   }
 
   
- public async uploadPhoto() {
+ public uploadPhoto() {
     if (this.datos.foto) {
       const file = this.datos.foto;
 
       this.api.uploadImage(file).subscribe(
-        (response) => {
+        async response => {
           console.log('Foto subida correctamente:', response.url);
           this.datos.enlace = response.url;
           console.log('enlace para bd: '+ this.datos.enlace);
-          // Aquí puedes actualizar la interfaz de usuario o manejar la respuesta de alguna otra forma
+          const alert = await this.alert.create({
+            message: "Foto subida correctamente :)",
+            buttons: ["Cerrar"],
+          });
+          await alert.present();
+          
         },
-        (error) => {
+        async error => {
           console.error('Error al subir la foto:', error);
+          const alert = await this.alert.create({
+            message: "error en la carga de foto :(",
+            buttons: ["Cerrar"],
+          });
+          await alert.present();
         }
       );
     }
   }
+
 }
