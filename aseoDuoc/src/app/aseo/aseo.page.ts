@@ -6,6 +6,7 @@ import { FechaserviceService } from '../appservices/fechaservice.service';
 import { DatosserviceService } from '../appservices/datosservice.service';
 import { AseoserviceService } from '../appservices/aseoservice.service';
 import { NavigationserviceService } from '../appservices/navigationservice.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-aseo',
   templateUrl: './aseo.page.html',
@@ -22,7 +23,8 @@ export class AseoPage implements OnInit {
     private fecha: FechaserviceService,
     private datos: DatosserviceService,
     private aseo: AseoserviceService,
-    private navegacionService: NavigationserviceService
+    private navegacionService: NavigationserviceService,
+    private alert: AlertController
     
   ) { }
   
@@ -101,15 +103,25 @@ export class AseoPage implements OnInit {
 
           this.datos.datosUpdate = {
             'fecha_salida': this.datos.fechaSalida,
-            'id_registro': this.datos.id_registro
+            'id_registro': this.datos.id_registro,
+            'espacio_id_esp': this.datos.espacio
           }
-          this.aseo.scanFinalizar(this.datos.datosUpdate);
 
-          this.datos.id_registro = 0 ;
-          this.datos.espacio = ''
-          this.datos.fechaEntrada = ''
-          this.datos.fechaSalida = ''
-     
+          if (this.scanResult === this.datos.espacio){
+            this.aseo.scanFinalizar(this.datos.datosUpdate);
+            this.datos.id_registro = 0 ;
+            this.datos.espacio = ''
+            this.datos.fechaEntrada = ''
+            this.datos.fechaSalida = ''
+          }
+          else{
+            const alert = await this.alert.create({
+              message: "error al finalizar registro :(",
+              buttons: ["Cerrar"],
+            });
+            await alert.present();
+          }
+          
         }};
   
 }

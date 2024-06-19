@@ -17,12 +17,6 @@ export class AseoserviceService {
 
 scanInicio(data : any){
   
-/* const data = {
-'id_emp: ': this.datos.id,
-'id_esp: ': this.datos.espacio,
-'salida: ': this.datos.fechaSalida,
-'entrada: ': this.datos.fechaEntrada} */
-
 this.api.postInicioAseo(data).subscribe(
   async response => {
     this.datos.id_registro = response.id_registro;
@@ -46,11 +40,6 @@ this.api.postInicioAseo(data).subscribe(
 
 scanObs(data : any){
   
-/* const data = {
-'id_emp: ': this.datos.id,
-'id_esp: ': this.datos.espacio,
-'salida: ': this.datos.fechaSalida,
-'entrada: ': this.datos.fechaEntrada} */
 
 this.api.postInsertObs(data).subscribe(
   async response => {
@@ -94,25 +83,6 @@ scanFinalizar(data: any){
   );
 }
 
-
-/* this.api.postInsertObs(data).subscribe(
-  async response => {
-    const alert = await this.alert.create({
-      message: "registro exitoso :)",
-      buttons: ["Cerrar"],
-    });
-    await alert.present();
-    console.log(response); // Puedes manejar la respuesta aquí
-  },
-  async error => {
-    const alert = await this.alert.create({
-      message: "error de registro :(",
-      buttons: ["Cerrar"],
-    });
-    await alert.present();
-    console.log(error); // Puedes manejar el error aquí
-  }
-); */
 }
 
 
