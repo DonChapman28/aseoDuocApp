@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DatosserviceService {
-  public id: any;
+  public id: number = 0;
   public fechaEntrada: any;
   public fechaSalida: any;
   public espacio: any;

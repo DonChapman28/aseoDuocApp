@@ -39,6 +39,10 @@ enlace: any = 'Sin foto';
     }
     console.log(this.datos.datosObservacion);
     this.aseo.scanObs(this.datos.datosObservacion);
+    this.datos.descripcion = ''
+    this.datos.enlace = ''
+    this.datos.tipo_observacion = ''
+    this.datos.foto = ''
    
   }
   

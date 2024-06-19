@@ -104,6 +104,12 @@ export class AseoPage implements OnInit {
             'id_registro': this.datos.id_registro
           }
           this.aseo.scanFinalizar(this.datos.datosUpdate);
+
+          this.datos.id_registro = 0 ;
+          this.datos.espacio = ''
+          this.datos.fechaEntrada = ''
+          this.datos.fechaSalida = ''
+     
         }};
   
 }
