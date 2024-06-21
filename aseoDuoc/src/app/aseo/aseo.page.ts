@@ -118,20 +118,31 @@ export class AseoPage implements OnInit {
             'espacio_id_esp': this.datos.espacio
           }
 
-          if (this.scanResult === this.datos.espacio){
-            this.aseo.scanFinalizar(this.datos.datosUpdate);
-            this.datos.id_registro = 0 ;
-            this.datos.espacio = ''
-            this.datos.fechaEntrada = ''
-            this.datos.fechaSalida = ''
+          if(this.scanResult){
+            if (this.scanResult === this.datos.espacio){
+              this.aseo.scanFinalizar(this.datos.datosUpdate);
+              this.datos.id_registro = 0 ;
+              this.datos.espacio = ''
+              this.datos.fechaEntrada = ''
+              this.datos.fechaSalida = ''
+            }
+            else{
+              const alert = await this.alert.create({
+                message: "error al finalizar registro :(",
+                buttons: ["Cerrar"],
+              });
+              await alert.present();
+            }
           }
           else{
             const alert = await this.alert.create({
-              message: "error al finalizar registro :(",
+              message: "no es podible finalizar el registro",
               buttons: ["Cerrar"],
             });
             await alert.present();
           }
+
+          
           
         }};
   
