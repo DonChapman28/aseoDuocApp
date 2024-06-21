@@ -77,7 +77,18 @@ export class AseoPage implements OnInit {
             'fecha_entrada':this.datos.fechaEntrada,
             'fecha_salida':null
           }
-          this.aseo.scanInicio(this.datos.datosRegistro);
+
+          if(this.datos.espacio){
+            this.aseo.scanInicio(this.datos.datosRegistro);
+          }
+          else{
+            const alert = await this.alert.create({
+              message: "Qr invalido",
+              buttons: ["Cerrar"],
+            });
+            await alert.present();
+
+          }
         }};
   
     async startScanSalida(){
