@@ -3,7 +3,7 @@ import { DatosserviceService } from '../appservices/datosservice.service';
 import { ModalController, Platform } from '@ionic/angular';
 import { AseoserviceService } from '../appservices/aseoservice.service';
 import { PhotoModalComponent } from '../photoService/photo-modal-component';
-
+import { NavigationserviceService } from '../appservices/navigationservice.service';
 @Component({
   selector: 'app-observaciones',
   templateUrl: './observaciones.page.html',
@@ -17,9 +17,14 @@ enlace: any = 'Sin foto';
   constructor(private platform: Platform,
     private modalController: ModalController,
     private datos: DatosserviceService,
-    private aseo: AseoserviceService) { }
+    private aseo: AseoserviceService,
+    private navegacionService: NavigationserviceService) { }
     
   ngOnInit() {
+  }
+
+  irAseo() {
+    this.navegacionService.navegarAseo();
   }
 
   async foto() {
