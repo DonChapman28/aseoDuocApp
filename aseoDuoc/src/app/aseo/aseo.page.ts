@@ -136,7 +136,7 @@ export class AseoPage implements OnInit {
           }
           else{
             const alert = await this.alert.create({
-              message: "no es podible finalizar el registro",
+              message: "no es posible finalizar el registro",
               buttons: ["Cerrar"],
             });
             await alert.present();
@@ -145,5 +145,5 @@ export class AseoPage implements OnInit {
           
           
         }};
-  
+
 }

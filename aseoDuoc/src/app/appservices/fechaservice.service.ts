@@ -41,4 +41,32 @@ export class FechaserviceService {
     return(fechaFormateada);
   }
 
+
+ getDiaEsp(){
+  // Crear un objeto de fecha
+let fecha = new Date();
+
+// Obtener el día de la semana (0-6)
+let diaSemana = fecha.getDay();
+
+// Array con los nombres de los días en español
+let diasSemana = [
+  "Domingo", 
+  "Lunes", 
+  "Martes", 
+  "Miércoles", 
+  "Jueves", 
+  "Viernes", 
+  "Sábado"
+];
+
+// Obtener el nombre del día en español
+let diaEnEspanol = diasSemana[diaSemana];
+
+// Mostrar el resultado
+console.log(diaEnEspanol);
+return(diaEnEspanol);
+}
+
+
 }

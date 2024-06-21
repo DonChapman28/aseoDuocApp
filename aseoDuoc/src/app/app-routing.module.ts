@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'observaciones',
     loadChildren: () => import('./observaciones/observaciones.module').then( m => m.ObservacionesPageModule)
   },
+  {
+    path: 'horario',
+    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule)
+  },
 
 
 

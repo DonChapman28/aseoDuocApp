@@ -48,6 +48,11 @@ getRegistroUsuario(id: number){
   return this.http.get(url);
 }
 
+getHorarioUsuario(dia: string){
+  const url = `${this.urlAPI}/horario?dia=${dia}`; 
+  return this.http.get(url);
+}
+
   uploadImage(data:File): Observable<{ url: string }> {
     const url = this.apiFoto + '/uploads';
 

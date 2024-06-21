@@ -25,4 +25,8 @@ export class HomePage {
     this.datos.id = 0;
     this.navegacionService.navegarLogin();
   }
+  
+  irHorario() {
+    this.navegacionService.navegarHorario();
+  }
 }

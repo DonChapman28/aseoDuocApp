@@ -26,4 +26,8 @@ export class NavigationserviceService {
   navegarHome() {
     this.router.navigate(['home/:id']);
   }
+  
+  navegarHorario() {
+    this.router.navigate(['/horario']);
+  }
 }

@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="irHome()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>horario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">horario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-card-content style="overflow-x: auto;">
+        <table style="border-collapse: collapse; width: 100%;">
+          <thead>
+            <tr>
+              <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Sala</th>
+              <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Asignatura</th>
+              <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Inicio</th>
+              <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Termino</th>
+              <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Dia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let horario of horarios">
+              <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ horario.id_esp }}</td>
+              <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ horario.nom_esp }}</td>
+              <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ horario.hora_entrada }}</td>
+              <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ horario.hora_salida }}</td>
+              <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ horario.dia }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+</ion-content>
