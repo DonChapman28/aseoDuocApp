@@ -50,7 +50,7 @@ let fecha = new Date();
 let diaSemana = fecha.getDay();
 
 // Array con los nombres de los días en español
-let diasSemana = [
+let semana = [
   "Domingo", 
   "Lunes", 
   "Martes", 
@@ -61,12 +61,14 @@ let diasSemana = [
 ];
 
 // Obtener el nombre del día en español
-let diaEnEspanol = diasSemana[diaSemana];
+let diaEnEspanol = semana[diaSemana];
 
 // Mostrar el resultado
 console.log(diaEnEspanol);
 return(diaEnEspanol);
 }
+
+
 
 
 }

@@ -20,8 +20,13 @@ export class HorarioPage implements OnInit {
 
       
     this.api.getHorarioUsuario(this.fecha.getDiaEsp()).subscribe((registroData: any) => {
-      this.horarios = registroData;
-      console.log(registroData);
+      this.horarios = registroData.map((hora: any) =>{
+        return{
+          ...hora,
+          estado: this.disponible(hora.hora_entrada, hora.hora_salida),
+        };
+      });
+      console.log(this.horarios);
 
   });
 };
@@ -30,5 +35,18 @@ irHome() {
   this.navegacionService.navegarHome();
 }
 
+disponible(hora_entrada: any, hora_salida: any){
+  const now = new Date();
+  const currentDate = now.toISOString().split('T')[0];
+
+  const entrada = new Date(`${currentDate}T${hora_entrada}`);
+  const salida = new Date(`${currentDate}T${hora_salida}`);
+
+  const disponible = now >= entrada && now <= salida;
+  
+  console.log('es disponible? = ' + disponible)
+  return now >= entrada && now <= salida;
+  
+}
 
 }

@@ -17,7 +17,7 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <ion-card>
+   <!--  <ion-card>
       <ion-card-content style="overflow-x: auto;">
         <table style="border-collapse: collapse; width: 100%;">
           <thead>
@@ -40,7 +40,21 @@
           </tbody>
         </table>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
+    <ion-text color="primary" >
+      <h1 class="ion-text-center"></h1>
+      <ion-item *ngFor="let horario of horarios">
+        <ion-card style="width: 100%; display: block;">
+          <ion-card-header>
+            <ion-card-subtitle>{{horario.dia}}</ion-card-subtitle>
+            <ion-card-title>{{horario.nom_esp}}</ion-card-title>
+            <ion-card-subtitle>{{horario.id_esp}}</ion-card-subtitle>
+            <ion-card-subtitle>{{horario.hora_entrada}}</ion-card-subtitle>
+            <ion-card-subtitle>{{horario.hora_salida}}</ion-card-subtitle>
+          </ion-card-header>
+      </ion-card>
+      </ion-item>
+      </ion-text>
   </ion-content>
 
 </ion-content>
