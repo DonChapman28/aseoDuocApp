@@ -8,7 +8,7 @@ import { DatosserviceService } from '../appservices/datosservice.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  
   constructor(private navegacionService: NavigationserviceService,
               private datos: DatosserviceService
   ) {}
