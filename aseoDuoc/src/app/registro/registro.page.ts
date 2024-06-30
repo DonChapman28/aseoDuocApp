@@ -17,7 +17,18 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
     
-    this.api.getRegistroUsuario(this.datos.id).subscribe((data: any) => {
+    /* this.api.getRegistroUsuario(this.datos.id).subscribe((data: any) => {
+      this.registros = data.map((registro: any) => {
+        return {
+          ...registro,
+          fecha_entrada: this.formatDate(registro.fecha_entrada),
+          fecha_salida: this.formatDate(registro.fecha_salida)
+        };
+      });
+      console.log(this.registros);
+    });
+ */
+    this.api.getRegistroUsuarioCard(this.datos.id).subscribe((data: any) => {
       this.registros = data.map((registro: any) => {
         return {
           ...registro,
@@ -42,7 +53,7 @@ export class RegistroPage implements OnInit {
     const hours = ('0' + date.getUTCHours()).slice(-2);
     const minutes = ('0' + date.getUTCMinutes()).slice(-2);
     
-    return `${day}-${year}-${month} ${hours}:${minutes}`;
+    return `${day}-${month}-${year} ${hours}:${minutes}`;
   }
   
   
