@@ -10,15 +10,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item *ngFor="let registro of registros">
-    <ion-card style="width: 100%; display: block;">
-      <ion-card-header>
-        <ion-card-subtitle>Id: {{registro.id_registro}}</ion-card-subtitle>
-        <ion-card-subtitle>Responsable: {{registro.nombre}} {{registro.apellido_p}}</ion-card-subtitle>
-        <ion-card-subtitle>Sala: {{registro.espacio_id_esp}}</ion-card-subtitle>
-        <ion-card-subtitle>Inicio: {{registro.fecha_entrada}}</ion-card-subtitle>
-        <ion-card-subtitle>Termino: {{registro.fecha_salida}}</ion-card-subtitle>
-      </ion-card-header>
+  <ion-card>
+    <ion-card-content style="overflow-x: auto;">
+      <table style="border-collapse: collapse; width: 100%;">
+        <thead>
+          <tr>
+            <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Registro</th>
+            <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Espacio</th>
+            <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Inicio</th>
+            <th style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">Termino</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registro of registros">
+            <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ registro.id_registro }}</td>
+            <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ registro.espacio_id_esp }}</td>
+            <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ registro.fecha_entrada }}</td>
+            <td style="min-width: 100px; border-bottom: 1px solid black; text-align: left;">{{ registro.fecha_salida }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
   </ion-card>
-  </ion-item>
 </ion-content>
