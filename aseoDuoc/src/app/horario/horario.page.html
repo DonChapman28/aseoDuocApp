@@ -24,9 +24,9 @@
           <ion-card-header>
             <ion-card-subtitle>{{horario.dia}}</ion-card-subtitle>
             <ion-card-title>{{horario.nom_esp}}</ion-card-title>
-            <ion-card-subtitle>{{horario.id_esp}}</ion-card-subtitle>
-            <ion-card-subtitle>{{horario.hora_entrada}}</ion-card-subtitle>
-            <ion-card-subtitle>{{horario.hora_salida}}</ion-card-subtitle>
+            <ion-card-subtitle>Sala {{horario.id_esp}}</ion-card-subtitle>
+            <ion-card-subtitle>Inicio {{horario.hora_entrada}}</ion-card-subtitle>
+            <ion-card-subtitle>Termino {{horario.hora_salida}}</ion-card-subtitle>
             <ng-container *ngIf="!horario.estado; noDisponible">
               <ion-card-subtitle color="success" >Disponible</ion-card-subtitle>
             </ng-container>
